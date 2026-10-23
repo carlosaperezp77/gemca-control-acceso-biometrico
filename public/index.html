@@ -124,14 +124,14 @@ async function loadStatus() {
     const pushText = !loc.pushConfigured
       ? 'Token de ingesta sin configurar (.env)'
       : (hasRecentEvent ? 'Recibiendo eventos' : 'Sin eventos en las últimas 24h');
-    grid.innerHTML += \`
+    grid.innerHTML += `
       <div class="card">
-        <h3>\${loc.name}</h3>
-        <div class="status-row"><span><span class="dot \${dotClass}"></span>\${pushText}</span></div>
-        <div class="muted">Modelo: \${loc.model}</div>
-        <div class="muted">Último evento recibido: \${fmtDate(loc.lastEventReceivedAt)}</div>
-        \${loc.pullConfigured ? \`<div class="muted">Respaldo por consulta directa: \${loc.pullOnline ? 'en línea' : 'sin conexión'}</div>\` : ''}
-      </div>\`;
+        <h3>${loc.name}</h3>
+        <div class="status-row"><span><span class="dot ${dotClass}"></span>${pushText}</span></div>
+        <div class="muted">Modelo: ${loc.model}</div>
+        <div class="muted">Último evento recibido: ${fmtDate(loc.lastEventReceivedAt)}</div>
+        ${loc.pullConfigured ? `<div class="muted">Respaldo por consulta directa: ${loc.pullOnline ? 'en línea' : 'sin conexión'}</div>` : ''}
+      </div>`;
   });
 }
 
@@ -144,16 +144,16 @@ async function loadWeek() {
   document.getElementById('emptyState').style.display = data.employees.length ? 'none' : 'block';
   data.employees.forEach(emp => {
     const badge = emp.unauthorizedCount > 0
-      ? \`<span class="badge warn">\${emp.unauthorizedCount}</span>\`
+      ? `<span class="badge warn">${emp.unauthorizedCount}</span>`
       : '0';
-    rows.innerHTML += \`
+    rows.innerHTML += `
       <tr>
-        <td>\${emp.employeeNo}</td>
-        <td>\${emp.name}</td>
-        <td>\${emp.locationsUsed.join(' / ')}</td>
-        <td>\${emp.totalHours} h</td>
-        <td>\${badge}</td>
-      </tr>\`;
+        <td>${emp.employeeNo}</td>
+        <td>${emp.name}</td>
+        <td>${emp.locationsUsed.join(' / ')}</td>
+        <td>${emp.totalHours} h</td>
+        <td>${badge}</td>
+      </tr>`;
   });
 }
 
